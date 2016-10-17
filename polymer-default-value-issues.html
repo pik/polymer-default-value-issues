@@ -1,0 +1,49 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`polymer-default-value-issues`
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="polymer-default-value-issues">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Value of foo is: [[configuration.foo]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'polymer-default-value-issues',
+      observers: [
+        '_setupConfigurationFromDefaults(defaults)'
+      ],
+      properties: {
+        defaults: {
+          type: Object,
+          value: null
+        },
+        configuration: {
+          type: Object,
+        },
+        baseConfiguration: {
+          type: String,
+          value: null
+        },
+      },
+      _setupConfigurationFromDefaults(defaults) {
+        if (defaults && this.baseConfiguration === null) {
+          this.baseConfiguration = 'defaults'
+          this.set('configuration', defaults)
+        }
+      },
+
+    });
+  </script>
+</dom-module>

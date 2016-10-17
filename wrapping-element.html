@@ -1,0 +1,28 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./polymer-default-value-issues.html">
+
+<dom-module id="wrapping-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <polymer-default-value-issues defaults="[[someDefaults]]"></polymer-default-value-issues>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'wrapping-element',
+
+      properties: {
+        someDefaults: {
+          type: Object,
+          value() { return { foo: 'bar' } }
+        },
+      },
+
+    });
+  </script>
+</dom-module>
